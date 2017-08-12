@@ -1,7 +1,7 @@
 const restify = require('restify');
 const CodeMirror = require('codemirror-node');
 const corsMiddleware = require('restify-cors-middleware');
-const {VM} = require('vm2');
+const SandBox = require('./sandbox');
 
 const cors = corsMiddleware({
     origins:['*']
@@ -13,11 +13,8 @@ function respond(req, res, next) {
 }
 
 function getCode(req, res, next){
-    const vm = new VM();
-    const lang = 'javascript';
-    const result = vm.run(req.params.code);
-    console.log(result);
-    res.json({result});
+    const result = SandBox.test(req.params);
+    res.json(result);
 }
 
 const server = restify.createServer();

@@ -10,6 +10,7 @@
   "author": "Adi2Point0",
   "license": "ISC",
   "dependencies": {
+    "assert": "^1.4.1",
     "codemirror-node": "0.0.5",
     "restify": "^5.0.1",
     "restify-cors-middleware": "^1.0.1",
